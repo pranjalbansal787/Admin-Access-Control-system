@@ -1,0 +1,33 @@
+/* SaveButton.css */
+
+/* Apply custom styles to the Bootstrap button */
+.custom-save-button {
+    background-color: #005f37; /* Primary blue color */
+    margin-left: 10px;
+    margin-bottom: 20px;
+    padding: 10px 20px; /* Increased horizontal padding for better visual balance */
+    font-size: 16px;
+    color: white; /* Ensure text color is white for better contrast */
+    border: none; /* Remove default border */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for background and shadow */
+}
+
+.custom-save-button:hover, .custom-save-button:focus {
+    background-color: #00b35f; /* Darker shade for hover/focus */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Slightly larger shadow on hover/focus */
+    outline: none; /* Remove outline to keep the design clean */
+}
+
+.custom-save-button:active {
+    background-color: #005f37; /* Even darker shade for active */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Smaller shadow for a "pressed" effect */
+}
+
+.custom-save-button:disabled {
+    background-color: #cccccc;
+    color: #666666; /* Slightly darker text color for disabled state */
+    cursor: not-allowed; /* Change cursor to indicate the button is disabled */
+    box-shadow: none; /* Remove shadow in disabled state */
+}

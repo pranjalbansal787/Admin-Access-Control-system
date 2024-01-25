@@ -1,0 +1,57 @@
+/* AccessControlPage.css */
+
+/* Overall layout */
+.access-control-container {
+    font-family: 'Arial', sans-serif;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #f0f0f0;
+  }
+
+  .CTA-options{
+    display: flex;
+    margin: 10px;
+  }
+  
+  /* Messages */
+  .message {
+    font-weight: bold;
+    margin: 15px 0;
+    padding: 10px;
+    color: #45a049;
+    border-left: 3px solid #4CAF50;
+    background-color: #d17a7a3f;
+    animation: shake 0.5s ease-in-out;
+  }
+  
+  .message-loose {
+    color: #D32F2F;
+    border-left-color: #D32F2F;
+  }
+
+  .all-users{
+    font-weight: bold;
+    display: flex;
+    margin: 5px;
+  }
+  .access-message {
+    color: rgb(0, 92, 128);
+    font-size: 25px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #cfecd1;
+  }
+
+  @keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    20%, 60%, 80% {
+        transform: translateX(-10px);
+    }
+    40%, 100% {
+        transform: translateX(10px);
+    }
+}
