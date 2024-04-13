@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown } from 'react-bootstrap'; //React Bootstrap is a dynamic front-end framework that combines the power of React, a popular JavaScript library, with Bootstrap, a versatile CSS framework.
 import './UserDropdown.css';
 
 const UserDropdown = ({ users, selectedUser, onSelectUser }) => {

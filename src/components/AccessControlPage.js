@@ -6,18 +6,40 @@ import UserDropdown from './UserDropdown';
 import './AccessControlPage.css';
 
 const AccessControlPage = () => {
-    // State for managing user data
-    const [users, setUsers] = useState([
+    // Load users from localStorage or use default if no data exists
+    const initialUsers = JSON.parse(localStorage.getItem('users')) || [
         { id: 1, name: 'User 1', access: [true, false, false, true] },
         { id: 2, name: 'User 2', access: [false, true, true, false] },
         { id: 3, name: 'User 3', access: [false, true, false, true] },
-        { id: 4, name: 'User 4', access: [true, false, true, false] },
-        // ... additional users
-    ]);
-    const [stagedUsers, setStagedUsers] = useState(users);
-    const [selectedUser, setSelectedUser] = useState(users[0]);
+        { id: 4, name: 'User 4', access: [true, false, true, false] }
+    ];
+
+    const [users, setUsers] = useState(initialUsers);
+    const [stagedUsers, setStagedUsers] = useState(initialUsers);
+    const [selectedUser, setSelectedUser] = useState(initialUsers[0]);
     const [pendingChangeMessage, setPendingChangeMessage] = useState('');
     const [hasChanges, setHasChanges] = useState(false);
+
+    // Function to update state and local storage
+    const updateStateAndStorage = (updatedUsers) => {
+        localStorage.setItem('users', JSON.stringify(updatedUsers));
+        setUsers(updatedUsers);
+    };
+
+    // Effect to update state when local storage changes
+    useEffect(() => {
+        const handleStorageChange = () => {
+            const updatedUsers = JSON.parse(localStorage.getItem('users')) || [];
+            setUsers(updatedUsers);
+            // setStagedUsers(updatedUsers);
+        };
+
+        window.addEventListener('storage', handleStorageChange);
+
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+        };
+    }, [setUsers]);
 
     // Handling checkbox change for user access
     const handleCheckboxChange = (userId, cardIndex) => {
@@ -45,9 +67,10 @@ const AccessControlPage = () => {
             alert('Nothing to save. Select an action in order to continue.');
             return;
         }
-        // Save staged changes to users
-        setUsers(stagedUsers);
+        // Save staged changes to users and localStorage
+        updateStateAndStorage(stagedUsers);
         setPendingChangeMessage('');
+        setHasChanges(false);
         alert('User access settings have been saved successfully');
     };
 
